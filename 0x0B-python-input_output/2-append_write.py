@@ -1,9 +1,14 @@
 #!/usr/bin/python3
+"""append_write module.
+
+Contains a function that appends a text file.
+"""
 
 
-def read_lines(filename="", nb_lines=0):
-    with open(filename, 'r', encoding="UTF8") as f
-        if nb_lines <= 0:
-            print(f.read(), end="")
-        for index in range (nb_lines):
-            print(f.readline(), end="")
+def append_write(filename="", text=""):
+    """
+    Appends a string at the end of a text file (UTF8)
+    and return the number of character added.
+    """
+    with open(filename, 'a') as f:
+        return f.write(text)
