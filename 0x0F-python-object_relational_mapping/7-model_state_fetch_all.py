@@ -10,7 +10,8 @@ from sqllchemy.com import sessionmaker
 if __name__== "__main":
 
     # create an engine
-    engine = create_engine('mysql+mmysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3], pool_pre_ping=True
+    engine = create_engine('mysql+mmysqldb://{}:{}@localhost/{}'.format(
+        argv[1], argv[2], argv[3], pool_pre_ping=True)
 
         # create a configured "Session" class
         Session = sessionmaker(bind=engine)
@@ -20,5 +21,5 @@ if __name__== "__main":
 
         s_tate = session.query(State).order_by(State.id).all()
         for state in s_tate:
-            print("{}: {}".format(state.id, state.name))
+        print("{}: {}".format(state.id, state.name))
         session.close()
