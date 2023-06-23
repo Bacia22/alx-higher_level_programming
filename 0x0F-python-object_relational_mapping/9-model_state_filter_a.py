@@ -1,6 +1,7 @@
-#1/usr/bin/python3
+#!/usr/bin/python3
 """
-Script that lsits all State objects that contain the letter a from the database Using module SQLAlchemy
+Script that lsits all State objects that contain the letter a from the database
+Using module SQLAlchemy
 """
 
 from model_state import Base, State
