@@ -1,18 +1,20 @@
 t request = require('request');
+const url = process.argv[2];
 
-request(process.argv[2], function (error, response, body) {
-  if (error) {
-    console.error(error);
+request(url, function (err, data, body) {
+  if (err) {
+    console.log(err);
+  } else {
+    let counter = 0;
+    const films = JSON.parse(body).results;
+    for (let result = 0; result < films.length; result++) {
+      const characters = films[result].characters;
+      for (let j = 0; j < characters.length; j++) {
+        if (characters[j] === 'https://swapi-api.hbtn.io/api/people/18/' || characters[j] === 'http://swapi-api.hbtn.io/api/people/18/') {
+          counter += 1;
+        }
+      }
+    }
+    console.log(counter);
   }
-  /* const nb = JSON.parse(body).results.reduce((acc, elem) => {
-    acc += elem.characters.reduce((acc, character) => {
-      return (character === 'https://swapi.co/api/people/18/' ? acc + 1 : acc);
-    }, 0);
-    return (acc);
-  }, 0);
-  */
-  const nb = JSON.parse(body).results.filter((elem) => {
-    return elem.characters.filter((url) => { return url.includes('18'); }).length;
-  }).length;
-  console.log(nb);
 });
